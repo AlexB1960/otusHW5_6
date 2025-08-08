@@ -91,6 +91,8 @@
                 <configuration>
                     <systemPropertyVariables>
                         <base.url>https://otus.home.kartushin.su</base.url>
+                        <login>Александр</login>
+                        <password>qwe123</password>
                         <browser>chrome</browser>
                     </systemPropertyVariables>
                 </configuration>

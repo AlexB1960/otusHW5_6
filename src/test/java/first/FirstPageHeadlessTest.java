@@ -1,5 +1,6 @@
 package first;
 
+import common.AbsBaseTestSuite;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
@@ -9,7 +10,7 @@ public class FirstPageHeadlessTest extends AbsBaseTestSuite {
     private final Logger log = LogManager.getLogger(FirstPageHeadlessTest.class);
 
     public FirstPageHeadlessTest() {
-        super.mode = "headless";
+        super.option = "headless";
     }
 
     @Test
