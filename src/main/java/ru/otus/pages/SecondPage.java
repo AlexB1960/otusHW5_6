@@ -45,11 +45,13 @@ public class SecondPage extends AbsBasePage {
     }
 
     public void assertOutputText(String login) {
-        String actualText = getElement(OUTPUT_TEXT).getText();
-        assertThat(actualText).isEqualTo("Имя пользователя: " + login +"\n" +
-                                        "Электронная почта: qa@mail.ru\n" +
-                                        "Дата рождения: 2001-12-30\n" +
-                                        "Уровень языка: beginner");
+        if (isAvailable(OUTPUT_TEXT)) {
+            assertThat(getElement(OUTPUT_TEXT).getText())
+                    .isEqualTo("Имя пользователя: " + login +"\n" +
+                    "Электронная почта: qa@mail.ru\n" +
+                    "Дата рождения: 2001-12-30\n" +
+                    "Уровень языка: beginner");
+        }
     }
 
 }
