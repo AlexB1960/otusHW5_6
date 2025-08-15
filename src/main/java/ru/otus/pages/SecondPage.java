@@ -27,6 +27,7 @@ public class SecondPage extends AbsBasePage {
     public void fillForm(String name, String email, String pass, String pass2,
                          String birthday, String level) {
 
+        log.info("Сравнение пароля с подтверждением пароля");
         if (!pass.equals(pass2)) {
             log.info("Ошибка совпвдения пароля с подтверждением пароля.");
         }
