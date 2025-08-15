@@ -1,5 +1,7 @@
 package ru.otus.pages;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +18,7 @@ public class SecondPage extends AbsBasePage {
     private final By FIELD_LEVEL = By.id("language_level");
     private final By BUTTON_REGISTRY = By.cssSelector("input[type='submit']");
     private final By OUTPUT_TEXT = By.id("output");
+    private final Logger log = LogManager.getLogger(SecondPage.class);
 
     public SecondPage(WebDriver driver) {
         super(driver, "/form.html");
@@ -24,7 +27,10 @@ public class SecondPage extends AbsBasePage {
     public void fillForm(String name, String email, String pass, String pass2,
                          String birthday, String level) {
 
-        String script = "if(arguments[2]!=arguments[3]) {alert('Пароль не совпадает с подтверждением'); return false; } else {"
+        if (!pass.equals(pass2)) {
+            log.info("Ошибка совпвдения пароля с подтверждением пароля.");
+        }
+        String script = "if(arguments[2]!=arguments[3]) {alert('Пароль не совпадает с подтверждением пароля.'); return false; } else {"
                       + "document.querySelector('#username').value=arguments[0];"
                       + "document.querySelector('#email').value=arguments[1];"
                       + "document.querySelector('#password').value=arguments[2];"
@@ -44,38 +50,5 @@ public class SecondPage extends AbsBasePage {
                                         "Дата рождения: 2001-12-30\n" +
                                         "Уровень языка: beginner");
     }
-
-
-
-
-       /* document.getElementById('registrationForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // Останавливает отправку формы на сервер
-
-        // Получаем значения полей
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm_password').value;
-            const birthdate = document.getElementById('birthdate').value;
-            const languageLevel = document.getElementById('language_level').value;
-
-        // Проверка пароля и подтверждения пароля
-        if (password !== confirmPassword) {
-            alert('Пароли не совпадают!');
-            return;
-        }
-
-        // Формируем вывод
-            const outputText = `
-        Имя пользователя: ${username} <br>
-                Электронная почта: ${email} <br>
-                Дата рождения: ${birthdate} <br>
-                Уровень языка: ${languageLevel}
-            `;
-
-        // Отображаем данные
-        document.getElementById('output').innerHTML = outputText;
-    });*/
-
 
 }
