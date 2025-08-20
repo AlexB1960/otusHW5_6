@@ -38,10 +38,6 @@ public class WebDriverFactory {
                 throw new BrowserNotSupportedException(browser);
             }
         }
-        if (option.toLowerCase().trim().equals("fullscreen")) {
-            driver.manage().window().fullscreen();
-            driver.manage().window().maximize();
-        }
         return driver;
     }
 

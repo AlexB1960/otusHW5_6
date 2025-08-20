@@ -11,8 +11,23 @@ public class FirefoxDriverSettings implements ISettings {
     public AbstractDriverOptions settings(DesiredCapabilities desiredCapabilities, String... userArgs) {
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions firefoxOptions = new FirefoxOptions();
-        if (userArgs[0].toLowerCase().trim().equals("headless")) {
-            firefoxOptions.addArguments("headless");
+        switch (userArgs[0].toLowerCase().trim()) {
+            case "headless": {
+                firefoxOptions.addArguments("headless");
+                break;
+            }
+            case "fullscreen": {
+                firefoxOptions.addArguments("fullscreen");
+                //chromeOptions.addArguments("--start-maximized");
+                break;
+            }
+            case "maximize": {
+                firefoxOptions.addArguments("--start-maximized");
+                break;
+            }
+            case null, default: {
+                firefoxOptions.addArguments("--start-maximized");
+            }
         }
         //firefoxOptions.merge(desiredCapabilities);
         return firefoxOptions;

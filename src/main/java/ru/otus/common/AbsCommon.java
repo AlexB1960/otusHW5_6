@@ -11,19 +11,19 @@ import java.util.List;
 public abstract class AbsCommon {
     protected WebDriver driver;
     protected Actions actions;
+    protected WebDriverWait wait;
 
     public AbsCommon(WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
     protected WebElement getElement(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     protected List<WebElement> getElements(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
@@ -33,7 +33,6 @@ public abstract class AbsCommon {
 
     protected boolean isAvailable(By element) {
         boolean elementStatus;
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
             elementStatus = true;
@@ -46,7 +45,6 @@ public abstract class AbsCommon {
 
     protected boolean notAvailable(By element) {
         boolean elementStatus;
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(10000));
         try {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
             elementStatus = true;

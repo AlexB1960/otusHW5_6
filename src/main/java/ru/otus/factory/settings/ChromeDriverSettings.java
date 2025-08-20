@@ -11,8 +11,23 @@ public class ChromeDriverSettings implements ISettings {
     public AbstractDriverOptions settings(DesiredCapabilities desiredCapabilities, String... userArgs) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
-        if (userArgs[0].toLowerCase().trim().equals("headless")) {
-            chromeOptions.addArguments("headless");
+        switch (userArgs[0].toLowerCase().trim()) {
+            case "headless": {
+                chromeOptions.addArguments("headless");
+                break;
+            }
+            case "fullscreen": {
+                chromeOptions.addArguments("fullscreen");
+                //chromeOptions.addArguments("--start-maximized");
+                break;
+            }
+            case "maximize": {
+                chromeOptions.addArguments("--start-maximized");
+                break;
+            }
+            case null, default: {
+                chromeOptions.addArguments("--start-maximized");
+            }
         }
         //chromeOptions.merge(desiredCapabilities);
         return chromeOptions;

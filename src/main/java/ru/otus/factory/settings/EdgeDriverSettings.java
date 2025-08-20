@@ -11,8 +11,23 @@ public class EdgeDriverSettings implements ISettings {
     public AbstractDriverOptions settings(DesiredCapabilities desiredCapabilities, String... userArgs) {
         WebDriverManager.edgedriver().setup();
         EdgeOptions edgeOptions = new EdgeOptions();
-        if (userArgs[0].toLowerCase().trim().equals("headless")) {
-            edgeOptions.addArguments("headless");
+        switch (userArgs[0].toLowerCase().trim()) {
+            case "headless": {
+                edgeOptions.addArguments("headless");
+                break;
+            }
+            case "fullscreen": {
+                edgeOptions.addArguments("fullscreen");
+                //chromeOptions.addArguments("--start-maximized");
+                break;
+            }
+            case "maximize": {
+                edgeOptions.addArguments("--start-maximized");
+                break;
+            }
+            case null, default: {
+                edgeOptions.addArguments("--start-maximized");
+            }
         }
         //edgeOptions.merge(desiredCapabilities);
         return edgeOptions;
