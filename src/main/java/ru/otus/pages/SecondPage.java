@@ -5,10 +5,11 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import ru.otus.annotation.Path;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+@Path("/form.html")
 public class SecondPage extends AbsBasePage {
     private final By FIELD_NAME = By.id("username");
     private final By FIELD_EMAIL = By.id("email");
@@ -21,7 +22,7 @@ public class SecondPage extends AbsBasePage {
     private final Logger log = LogManager.getLogger(SecondPage.class);
 
     public SecondPage(WebDriver driver) {
-        super(driver, "/form.html");
+        super(driver);
     }
 
     public void fillForm(String name, String email, String pass, String pass2,
