@@ -5,7 +5,7 @@ import ru.otus.annotation.Path;
 import ru.otus.common.AbsCommon;
 
 public abstract class AbsBasePage extends AbsCommon {
-    private String baseUrl = System.getProperty("base.url");
+    private String baseUrl = System.getProperty("baseURL");
 
     public AbsBasePage(WebDriver driver) {
         super(driver);

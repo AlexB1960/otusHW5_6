@@ -9,7 +9,7 @@ import ru.otus.factory.WebDriverFactory;
 public abstract class AbsBaseTestSuite {
     protected WebDriver driver;
     protected String option;
-    protected String browser = System.getProperty("browser").toLowerCase().trim();
+    protected String browser = System.getProperty("browserName").toLowerCase().trim();
 
     @BeforeEach
     public void init() {

@@ -90,11 +90,12 @@
                 <version>${surefire.version}</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <base.url>https://otus.home.kartushin.su</base.url>
+                        <baseURL>https://otus.home.kartushin.su</baseURL>
                         <login>Alex</login>
                         <pass>qwe123</pass>
                         <pass2>qwe123</pass2>
-                        <browser>chrome</browser>
+                        <browserName>chrome</browserName>
+                        <browserVersion>139.0</browserVersion>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
