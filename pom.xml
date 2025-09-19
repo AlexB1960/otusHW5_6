@@ -91,6 +91,7 @@
                 <configuration>
                     <systemPropertyVariables>
                         <baseURL>https://otus.home.kartushin.su</baseURL>
+                        <remoteURL>http://193.104.57.173/wd/hub</remoteURL>
                         <login>Alex</login>
                         <pass>qwe123</pass>
                         <pass2>qwe123</pass2>

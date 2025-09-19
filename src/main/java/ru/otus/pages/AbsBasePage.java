@@ -6,6 +6,7 @@ import ru.otus.common.AbsCommon;
 
 public abstract class AbsBasePage extends AbsCommon {
     private String baseUrl = System.getProperty("baseURL");
+    private String remoteURL = System.getProperty("remoteURL");
 
     public AbsBasePage(WebDriver driver) {
         super(driver);
@@ -21,7 +22,11 @@ public abstract class AbsBasePage extends AbsCommon {
     }
 
     public void open() {
-        super.driver.get(baseUrl + getPath());
+        if (!remoteURL.isEmpty()) {
+            super.driver.get(remoteURL);
+        } else {
+            super.driver.get(baseUrl + getPath());
+        }
     }
 
 }
